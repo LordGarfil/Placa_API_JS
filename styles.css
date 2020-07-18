@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#txtPlaca{
+    text-transform: uppercase;
+}
+
+@media (max-width: 576px) { 
+    #root{
+        width: 100vw;
+    }
+ }
+
+ @media (min-width: 577px) { 
+    #root{
+        width: 50vw;
+    }
+ }
