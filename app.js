@@ -1,4 +1,4 @@
-getData = async (placa) => {
+ getData = async (placa) => {
   const url =
     "https://kyyva33hkl.execute-api.us-east-1.amazonaws.com/master/api/";
   const sendData = {
@@ -38,7 +38,7 @@ getData = async (placa) => {
   const data = await res.json();
   return data;
   //return data.data.soatFunnel.application
-};
+}; 
 
 renderCards = async () => {
   /* const data = await getData()
@@ -181,6 +181,7 @@ sendErrorMessage = (Message = "") => {
 
 document.querySelector("form").addEventListener("submit", (e) => {
   e.preventDefault();
+  animateProgressBar()
   renderCards();
 });
 
@@ -192,3 +193,40 @@ initializePage = () => {
 window.onload = () => {
   //initializePage()
 };
+
+animateProgressBar = () => {
+  const bar = document.getElementById("progressBar");
+  var width = 1;
+  if(bar.style.width >= 100){
+    /* bar.style.width = 0 + '%';
+    bar.innerHTML = 0 + '%'; */
+  }else{
+    var timer = setInterval(()=>{
+      if(width >= 100){
+        clearInterval(timer)
+      }else{
+        width++;
+      bar.style.width = width + '%';
+      bar.innerHTML = width * 1 + '%';
+      }
+    }, 70)
+  }
+}
+
+function move() {
+  var elem = document.getElementById("progressBar");
+  var width = 1;
+  var id = setInterval(frame, 65);
+  function frame() {
+      if (width >= 100) {
+        elem.style.width = 1;
+          clearInterval(id);
+      } else {
+          width++;
+          elem.style.width = width + '%';
+          document.getElementById("progressBar").innerHTML = width * 1 + '%';
+      }
+  }
+}
+
+ 
